@@ -1,9 +1,12 @@
 
+  // Declaring variables that will store conts for number of played rounds, computer wins an player wins
+  
   let roundCounter =1;
   let computerScore=0;
   let userScore=0;
 
-// Function playRound() gets user's and computer's selections and defines the winner throwing an alert
+// Function playGame() invokes function playRound and makes the game last till a player or a computer has wins count
+// equal to 5 
 
 playGame();
 
@@ -21,47 +24,56 @@ function playGame () {
      }
     }
 
+// Function playRound() invokes functions userPlay() and computerPlay() to get user's and computer's selection and then 
+// defines the winner for a round. It also increases roundCounter, computerScore and userScore vaiables. 
+
 function playRound() {
-    userPlay();
-    console.log('Player selection= ' + playerSelection);
-    computerPlay();
-    console.log('Computer selection= ' +computerSelection);
-   let roundResult=''; 
+    userPlay(); // inokes userPlay function to get the user's selection
+    console.log('Player selection= ' + playerSelection);  // logs the player's selection in console
+    computerPlay(); // invokes computerPlay function to get the computer's selection
+    console.log('Computer selection= ' +computerSelection); // logs the computer's selection in console
+   let roundResult=''; // declaring the roundResult variable for storing the round result information
     if (playerSelection == "ROCK" && computerSelection=="PAPER") {
            roundResult='You loose, paper beats rock!';
            computerScore++;
        } else if (playerSelection == "PAPER" && computerSelection=="SCISSORS") {
         computerScore++;
-        roundResult=('You loose, scissors beat paper!' + '\nYour score: ' + userScore + '\nComputer score: ' + computerScore);
+        roundResult=('You loose, scissors beat paper!' + '\nYour score: ' + userScore + '\nComputer score: ' +
+         computerScore);
        } else if (playerSelection == "SCISSORS" && computerSelection=="ROCK") {
         computerScore++;
-        roundResult=('You loose, rock beats scissors!' + '\nYour score: ' + userScore + '\nComputer score: ' + computerScore);
+        roundResult=('You loose, rock beats scissors!' + '\nYour score: ' + userScore + '\nComputer score: ' +
+         computerScore);
        } else if (playerSelection == "ROCK" && computerSelection=="ROCK") { 
-        roundResult=('Rock vs rock, it is a draw!' + '\nYour score: ' + userScore + '\nComputer score: ' + computerScore)
+        roundResult=('Rock vs rock, it is a draw!' + '\nYour score: ' + userScore + '\nComputer score: ' + 
+        computerScore)
        } else if (playerSelection == "PAPER" && computerSelection=="PAPER") { 
-        roundResult=('Paper vs paper, it is a draw!' + '\nYour score: ' + userScore + '\nComputer score: ' + computerScore)
+        roundResult=('Paper vs paper, it is a draw!' + '\nYour score: ' + userScore + '\nComputer score: ' + 
+        computerScore)
        } else if (playerSelection == "SCISSORS" && computerSelection=="SCISSORS") { 
-        roundResult=('Scissors vs scissors, it is a draw!' + '\nYour score: ' + userScore + '\nComputer score: ' + computerScore) 
+        roundResult=('Scissors vs scissors, it is a draw!' + '\nYour score: ' + userScore + '\nComputer score: ' + 
+        computerScore) 
        } else if (playerSelection !=='ROCK' && playerSelection !=='PAPER' && playerSelection!=='SCISSORS') {
-           roundResult=('Please enter a valid selection i ne pytaysya naebat computer' + '\nYour score: ' + userScore + '\nComputer score: ' + computerScore)
+           roundResult=('Please enter a valid selection i ne pytaysya naebat computer' + '\nYour score: ' + userScore 
+           + '\nComputer score: ' + computerScore)
        } else { 
-        userScore++;  
+        userScore++;  // increasing the userScore
         roundResult=('You win, congrats!' + '\nYour score: ' + userScore + '\nComputer score: ' + computerScore);
        }
-       roundCounter++;
-       return alert(roundResult);
+       roundCounter++; // increasing the roundCounter
+       return alert(roundResult); // returning the alert with one of the above results
 
     }
 
     function userPlay(){
-        let playerInput =(prompt('Please choose one of the three: Rock, Paper or Scissors'));
+        const playerInput =(prompt('Please choose one of the three: Rock, Paper or Scissors')); 
         playerSelection=playerInput.toUpperCase();
         return(playerSelection);
         }
 
       
         function computerPlay() {
-           let compInput= Math.floor(Math.random()*3);
+           const compInput= Math.floor(Math.random()*3);
            if (compInput ==2) {
             computerSelection='SCISSORS'
          } else if (compInput ==1) {
