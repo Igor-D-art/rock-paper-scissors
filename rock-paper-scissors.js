@@ -18,9 +18,9 @@ function playGame () {
         playRound();
     } 
     if (computerScore==5) {
-      alert('You loose the game. Coputer won 5 rounds. Want to play one more time - please reload the page =)');
+      alert('You loose the game. Coputer won 5 rounds. Want to play one more time - please press F5 =)');
      } else {
-      alert('You won 5 rounds! Congrats! Want to play one more time - please reload the page =)');
+      alert('You won 5 rounds! Congrats! Want to play one more time - please press F5 =)');
      }
     }
 
@@ -28,12 +28,15 @@ function playGame () {
 // defines the winner for a round. It also increases roundCounter, computerScore and userScore vaiables. 
 
 function playRound() {
+
     userPlay(); // inokes userPlay function to get the user's selection
     console.log('Player selection= ' + playerSelection);  // logs the player's selection in console
     computerPlay(); // invokes computerPlay function to get the computer's selection
     console.log('Computer selection= ' +computerSelection); // logs the computer's selection in console
+
    let roundResult=''; // declaring the roundResult variable for storing the round result information
-    if (playerSelection == "ROCK" && computerSelection=="PAPER") {
+
+    if (playerSelection == "ROCK" && computerSelection=="PAPER") { // this block defines the round winner
            roundResult='You loose, paper beats rock!';
            computerScore++;
        } else if (playerSelection == "PAPER" && computerSelection=="SCISSORS") {
@@ -57,10 +60,14 @@ function playRound() {
            roundResult=('Please enter a valid selection i ne pytaysya naebat computer' + '\nYour score: ' + userScore 
            + '\nComputer score: ' + computerScore)
        } else { 
+
         userScore++;  // increasing the userScore
+
         roundResult=('You win, congrats!' + '\nYour score: ' + userScore + '\nComputer score: ' + computerScore);
        }
+
        roundCounter++; // increasing the roundCounter
+
        return alert(roundResult); // returning the alert with one of the above results
 
     }
